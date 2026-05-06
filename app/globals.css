@@ -1,26 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0f0e0d;
+  --surface: #1a1917;
+  --surface-2: #242220;
+  --border: #2e2c29;
+  --border-light: #3a3835;
+  --text: #e8e4de;
+  --text-muted: #7a7570;
+  --text-dim: #4a4845;
+  --accent: #d4a853;
+  --accent-dim: #a07830;
+  --accent-glow: rgba(212, 168, 83, 0.15);
 }
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+ 
+* { box-sizing: border-box; }
+ 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
 }
+ 
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--surface); }
+::-webkit-scrollbar-thumb { background: var(--border-light); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+ 
+.resize-handle-x {
+  width: 6px;
+  background: var(--border);
+  cursor: col-resize;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.resize-handle-x:hover, .resize-handle-x.active { background: var(--accent-dim); }
+ 
+.resize-handle-y {
+  height: 6px;
+  background: var(--border);
+  cursor: row-resize;
+  flex-shrink: 0;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.resize-handle-y:hover, .resize-handle-y.active { background: var(--accent-dim); }
+ 
+textarea {
+  resize: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font-family: 'Geist Mono', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 1.65;
+  width: 100%;
+  height: 100%;
+  padding: 14px;
+  border: none;
+}
+textarea::placeholder { color: var(--text-dim); }
